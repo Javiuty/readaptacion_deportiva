@@ -1,0 +1,100 @@
+---
+import Brand from "./Brand.astro";
+import WhatsAppIcon from "./WhatsAppIcon.astro";
+import { NAV_LINKS, WHATSAPP_URL } from "../consts";
+---
+
+<header
+  class="fixed inset-x-0 top-0 z-[100] border-b border-transparent bg-[oklch(0.15_0.018_325/0.82)] backdrop-blur-[14px] transition-[border-color] duration-[250ms]"
+  id="topnav"
+>
+  <span
+    class="pointer-events-none absolute inset-x-0 -bottom-px h-0.5 origin-left bg-accent"
+    style="transform: scaleX(var(--scroll-progress, 0))"
+  ></span>
+
+  <div class="container-x flex h-[76px] items-center justify-between gap-6">
+    <Brand />
+
+    <nav>
+      <ul class="nav-links" id="navlinks">
+        {NAV_LINKS.map((link) => (
+          <li>
+            <a href={link.href}>{link.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a
+        class="btn btn-wa px-3.5 py-[11px] text-[14.5px] nav:px-5"
+        href={WHATSAPP_URL}
+        target="_blank"
+        rel="noopener"
+      >
+        <WhatsAppIcon size={17} strokeWidth={2.4} />
+        <span class="hidden nav:inline">WhatsApp</span>
+      </a>
+      <button
+        class="grid size-[42px] place-items-center rounded-[10px] border border-line text-[18px] text-text nav:hidden"
+        id="burger"
+        aria-label="Abrir menú"
+      >
+        ☰
+      </button>
+    </div>
+  </div>
+</header>
+
+<style>
+  /* Sombra inferior al hacer scroll (clase 'scrolled' añadida por JS) */
+  #topnav.scrolled {
+    border-bottom-color: var(--color-line);
+  }
+
+  /* Enlaces de navegación (estado 'active' controlado por JS) */
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    list-style: none;
+  }
+  .nav-links a {
+    display: block;
+    padding: 8px 13px;
+    border-radius: 999px;
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--color-muted);
+    text-decoration: none;
+    transition: color 0.15s ease, background 0.15s ease;
+  }
+  .nav-links a:hover {
+    color: var(--color-text);
+  }
+  .nav-links a.active {
+    color: var(--color-accent);
+    background: oklch(0.74 0.115 330 / 0.14);
+  }
+
+  /* Menú desplegable en móvil */
+  @media (max-width: 980px) {
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 76px;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 4px;
+      padding: 16px 24px 24px;
+      background: var(--color-bg2);
+      border-bottom: 1px solid var(--color-line);
+    }
+    .nav-links.open {
+      display: flex;
+    }
+  }
+</style>

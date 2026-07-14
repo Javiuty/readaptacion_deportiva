@@ -1,0 +1,55 @@
+---
+import SectionHead from "./SectionHead.astro";
+
+const testimonials = [
+  {
+    quote:
+      "Llegué con una rotura de ligamento y mucho miedo. Hoy vuelvo a jugar sin pensar en la rodilla. El proceso fue progresivo y me sentí acompañado en todo momento.",
+    initials: "JR",
+    name: "Javier R.",
+    role: "Readaptación de rodilla",
+  },
+  {
+    quote:
+      "Nunca había entrenado y me daba vergüenza empezar. Carmen me lo puso fácil desde el primer día: ahora entreno tres veces por semana y me encuentro mejor que nunca.",
+    initials: "LM",
+    name: "Laura M.",
+    role: "Entrenamiento personal",
+  },
+  {
+    quote:
+      "Con 68 años pensaba que esto no era para mí. Gracias al trabajo de fuerza y equilibrio he ganado seguridad y he dejado de tener dolor de espalda.",
+    initials: "PG",
+    name: "Pilar G.",
+    role: "Salud y movilidad",
+  },
+];
+---
+
+<section class="py-20 nav:py-[110px]" id="testimonios">
+  <div class="container-x">
+    <SectionHead eyebrow="Testimonios" title="Lo que dicen sus clientes" />
+    <div class="reveal-group grid gap-6 nav:grid-cols-3">
+      {testimonials.map((t) => (
+        <article
+          class="reveal grid content-between gap-5 rounded-card border border-line bg-surface px-[30px] py-8"
+        >
+          <blockquote class="quote-text text-pretty text-[16.5px] text-text">
+            {t.quote}
+          </blockquote>
+          <div class="flex items-center gap-3">
+            <span
+              class="grid size-[42px] place-items-center rounded-full border border-accent/35 bg-accent/15 text-[14px] font-extrabold text-accent"
+            >
+              {t.initials}
+            </span>
+            <div>
+              <strong class="block text-[15px]">{t.name}</strong>
+              <span class="text-[13px] text-muted">{t.role}</span>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

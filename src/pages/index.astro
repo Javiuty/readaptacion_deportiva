@@ -1,17 +1,168 @@
 ---
-
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Hero from "../components/Hero.astro";
+import Marquee from "../components/Marquee.astro";
+import Services from "../components/Services.astro";
+import Method from "../components/Method.astro";
+import About from "../components/About.astro";
+import Testimonials from "../components/Testimonials.astro";
+import Pricing from "../components/Pricing.astro";
+import Faq from "../components/Faq.astro";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
+import WhatsAppFab from "../components/WhatsAppFab.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+  <Nav />
+  <main>
+    <Hero />
+    <Marquee />
+    <Services />
+    <Method />
+    <About />
+    <Testimonials />
+    <Pricing />
+    <Faq />
+    <Contact />
+  </main>
+  <Footer />
+  <WhatsAppFab />
+</Layout>
+
+<script>
+  // Readaptación Deportiva — interacciones (vanilla JS)
+
+  // ---- Nav: sombra al hacer scroll + enlace activo ----
+  const nav = document.getElementById("topnav");
+  const links = Array.from(
+    document.querySelectorAll<HTMLAnchorElement>("#navlinks a"),
+  );
+  const sections = links
+    .map((a) => document.querySelector<HTMLElement>(a.getAttribute("href") || ""))
+    .filter((el): el is HTMLElement => Boolean(el));
+
+  function onScroll() {
+    if (!nav) return;
+    nav.classList.toggle("scrolled", window.scrollY > 10);
+
+    // Barra de progreso de scroll + parallax del brillo del hero
+    const doc = document.documentElement;
+    const max = doc.scrollHeight - window.innerHeight;
+    doc.style.setProperty(
+      "--scroll-progress",
+      max > 0 ? (window.scrollY / max).toFixed(4) : "0",
+    );
+    if (window.scrollY < window.innerHeight * 1.5) {
+      doc.style.setProperty("--hero-par", String(Math.round(window.scrollY * 0.22)));
+    }
+
+    const pos = window.scrollY + 140;
+    let current: string | null = null;
+    for (const section of sections) {
+      if (section.offsetTop <= pos) current = section.id;
+    }
+    links.forEach((a) => {
+      a.classList.toggle("active", a.getAttribute("href") === "#" + current);
+    });
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  // ---- Menú móvil ----
+  const burger = document.getElementById("burger");
+  const navlinks = document.getElementById("navlinks");
+  burger?.addEventListener("click", () => navlinks?.classList.toggle("open"));
+  navlinks?.addEventListener("click", (e) => {
+    if ((e.target as HTMLElement).tagName === "A") navlinks.classList.remove("open");
+  });
+
+  // ---- Reveal on scroll ----
+  // Solo activamos el estado "oculto hasta entrar en viewport" cuando el
+  // observer demuestra que funciona (html.io-ok la añade el primer callback).
+  const observer = new IntersectionObserver(
+    (entries) => {
+      document.documentElement.classList.add("io-ok");
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12 },
+  );
+  document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+  // Stagger: retardo incremental dentro de cada grupo de tarjetas
+  document.querySelectorAll(".reveal-group").forEach((group) => {
+    group.querySelectorAll<HTMLElement>(".reveal").forEach((el, i) => {
+      el.style.setProperty("--d", (i * 0.09).toFixed(2) + "s");
+      // tras la entrada, quitamos el retardo para que el hover responda al instante
+      el.addEventListener("transitionend", function clear() {
+        el.style.setProperty("--d", "0s");
+        el.removeEventListener("transitionend", clear);
+      });
+    });
+  });
+
+  // ---- FAQ acordeón ----
+  document.querySelectorAll<HTMLElement>(".faq-item").forEach((item) => {
+    const btn = item.querySelector(".faq-q");
+    const panel = item.querySelector<HTMLElement>(".faq-a");
+    btn?.addEventListener("click", () => {
+      const isOpen = item.classList.contains("open");
+      // cerrar las demás
+      document.querySelectorAll<HTMLElement>(".faq-item.open").forEach((other) => {
+        other.classList.remove("open");
+        const otherPanel = other.querySelector<HTMLElement>(".faq-a");
+        if (otherPanel) otherPanel.style.maxHeight = "0px";
+      });
+      if (!isOpen && panel) {
+        item.classList.add("open");
+        panel.style.maxHeight = panel.scrollHeight + "px";
+      }
+    });
+  });
+
+  // ---- Formulario: validación + estado enviado ----
+  const form = document.getElementById("contact-form") as HTMLFormElement | null;
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let ok = true;
+
+    function check(
+      fieldId: string,
+      inputId: string,
+      validator: (v: string) => boolean,
+    ) {
+      const field = document.getElementById(fieldId);
+      const input = document.getElementById(inputId) as
+        | HTMLInputElement
+        | HTMLTextAreaElement
+        | null;
+      const value = (input?.value || "").trim();
+      const valid = validator(value);
+      field?.classList.toggle("invalid", !valid);
+      if (!valid) ok = false;
+    }
+
+    check("f-nombre", "nombre", (v) => v.length >= 2);
+    check("f-telefono", "telefono", (v) => /^[+\d][\d\s\-()]{7,}$/.test(v));
+    check("f-mensaje", "mensaje", (v) => v.length >= 10);
+
+    if (ok) {
+      form.classList.add("sent");
+      const submitBtn = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+      if (submitBtn) submitBtn.disabled = true;
+    }
+  });
+
+  // limpiar error al teclear
+  ["nombre", "telefono", "mensaje"].forEach((id) => {
+    document.getElementById(id)?.addEventListener("input", () => {
+      document.getElementById("f-" + id)?.classList.remove("invalid");
+    });
+  });
+</script>

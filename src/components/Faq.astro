@@ -1,0 +1,65 @@
+---
+import SectionHead from "./SectionHead.astro";
+
+const faqs = [
+  {
+    q: "Tengo una lesión, ¿puedo empezar ya?",
+    a: "Sí, siempre que tu médico o fisioterapeuta haya dado el alta para empezar a hacer ejercicio. La readaptación es precisamente eso: el trabajo que viene después de la camilla. En la valoración inicial revisamos tu caso y coordinamos el punto de partida.",
+  },
+  {
+    q: "¿Necesito experiencia previa entrenando?",
+    a: "Ninguna. Gran parte de mis clientes empiezan de cero. El plan se adapta a tu nivel real y progresa contigo, sin prisas y sin compararte con nadie.",
+  },
+  {
+    q: "¿Dónde son las sesiones?",
+    a: "Las sesiones pueden ser presenciales o adaptarse a tu situación. Escríbeme y vemos juntas la opción que mejor te encaje según dónde vivas y tu disponibilidad.",
+  },
+  {
+    q: "¿Cuánto dura cada sesión y con qué frecuencia entrenaré?",
+    a: "Las sesiones duran 60 minutos. La frecuencia ideal depende de tu objetivo y tu agenda: lo habitual son 2-3 sesiones por semana, pero lo definimos en la valoración inicial.",
+  },
+  {
+    q: "¿Cómo empiezo?",
+    a: "Muy fácil: escríbeme por WhatsApp o desde el formulario de contacto. Agendamos una primera valoración gratuita, hablamos de tu caso y, si encajamos, diseñamos tu plan.",
+  },
+];
+---
+
+<section class="py-20 nav:py-[110px]" id="faq">
+  <div class="container-x">
+    <SectionHead eyebrow="Preguntas frecuentes" title="Dudas habituales" />
+    <div class="reveal-group grid max-w-[760px] gap-3.5">
+      {faqs.map((faq) => (
+        <div
+          class="faq-item reveal overflow-hidden rounded-soft border border-line bg-surface transition-[border-color] duration-200"
+        >
+          <button
+            class="faq-q flex w-full cursor-pointer items-center justify-between gap-4 border-none bg-transparent px-6 py-5 text-left font-body text-[17px] font-bold text-text"
+          >
+            {faq.q}
+            <span
+              class="chev grid size-7 flex-none place-items-center rounded-full border border-line text-[14px] text-accent transition-[transform,background] duration-[250ms]"
+            >
+              +
+            </span>
+          </button>
+          <div class="faq-a max-h-0 overflow-hidden transition-[max-height] duration-300">
+            <p class="max-w-[64ch] text-pretty px-6 pb-[22px] text-[16px] text-muted">
+              {faq.a}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-item.open {
+    border-color: oklch(0.74 0.115 330 / 0.35);
+  }
+  .faq-item.open .chev {
+    transform: rotate(45deg);
+    background: oklch(0.74 0.115 330 / 0.14);
+  }
+</style>

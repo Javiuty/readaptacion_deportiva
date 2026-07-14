@@ -1,0 +1,51 @@
+---
+import SectionHead from "./SectionHead.astro";
+
+const steps = [
+  {
+    num: "01",
+    title: "Valoración inicial",
+    text: "Conocemos tu historia, tu lesión u objetivo, y evaluamos movilidad, fuerza y postura.",
+  },
+  {
+    num: "02",
+    title: "Plan personalizado",
+    text: "Diseño tu programa con cargas, progresiones y frecuencia realistas para tu vida.",
+  },
+  {
+    num: "03",
+    title: "Entrena y progresa",
+    text: "Sesiones guiadas con técnica cuidada y ajustes constantes según tu evolución.",
+  },
+  {
+    num: "04",
+    title: "Objetivo cumplido",
+    text: "Vuelta al deporte o meta alcanzada, con herramientas para mantenerla a largo plazo.",
+  },
+];
+---
+
+<section class="py-20 nav:py-[110px]" id="metodo">
+  <div class="container-x">
+    <SectionHead
+      eyebrow="Cómo trabajo"
+      title="Un método, cuatro pasos"
+      text="Nada de rutinas genéricas. Un proceso claro, medible y adaptado a tu punto de partida."
+    />
+    <div class="reveal-group grid grid-cols-1 gap-5 xs:grid-cols-2 nav:grid-cols-4">
+      {steps.map((step) => (
+        <article
+          class="reveal relative grid content-start gap-3 rounded-card border border-line bg-surface px-[26px] pt-[30px] pb-7"
+        >
+          <span
+            class="font-display text-[42px] leading-none text-transparent [font-stretch:125%] [-webkit-text-stroke:1.5px_var(--color-accent)]"
+          >
+            {step.num}
+          </span>
+          <h3 class="text-[19px]">{step.title}</h3>
+          <p class="text-pretty text-[15px] text-muted">{step.text}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

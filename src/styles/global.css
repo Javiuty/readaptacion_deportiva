@@ -1,0 +1,356 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Readaptación Deportiva — Carmen Ramírez
+   Sistema visual: oscuro enérgico + malva de la tarjeta
+   ============================================================ */
+
+/* ---------- Fuentes (self-hosted) ---------- */
+@font-face {
+  font-family: "Archivo";
+  font-style: italic;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url("/fonts/archivo-italic-vietnamese.woff2") format("woff2");
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: "Archivo";
+  font-style: italic;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url("/fonts/archivo-italic-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Archivo";
+  font-style: italic;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url("/fonts/archivo-italic-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url("/fonts/archivo-vietnamese.woff2") format("woff2");
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url("/fonts/archivo-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url("/fonts/archivo-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ---------- Tokens de diseño (Tailwind v4) ---------- */
+@theme {
+  /* Color */
+  --color-bg: oklch(0.15 0.018 325);
+  --color-bg2: oklch(0.185 0.022 325);
+  --color-surface: oklch(0.215 0.025 325);
+  --color-surface2: oklch(0.25 0.028 325);
+  --color-line: oklch(0.32 0.03 325 / 0.55);
+  --color-text: oklch(0.96 0.008 325);
+  --color-muted: oklch(0.74 0.025 325);
+  --color-accent: oklch(0.74 0.115 330);
+  --color-on-accent: oklch(0.17 0.03 330);
+  --color-wa: oklch(0.72 0.17 155);
+  --color-on-wa: oklch(0.16 0.04 155);
+
+  /* Tipografía */
+  --font-display: "Archivo", sans-serif;
+  --font-body: "Archivo", sans-serif;
+
+  /* Forma */
+  --radius-card: 16px;
+  --radius-soft: 10px;
+
+  /* Breakpoints del diseño */
+  --breakpoint-xs: 560px;
+  --breakpoint-nav: 980px;
+
+  /* Animaciones */
+  --animate-marquee: marquee 26s linear infinite;
+  --animate-fab-pulse: fab-pulse 3s ease-out infinite;
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes fab-pulse {
+    0% {
+      box-shadow: 0 12px 32px oklch(0 0 0 / 0.45), 0 0 0 0 oklch(0.72 0.17 155 / 0.4);
+    }
+    70% {
+      box-shadow: 0 12px 32px oklch(0 0 0 / 0.45), 0 0 0 16px oklch(0.72 0.17 155 / 0);
+    }
+    100% {
+      box-shadow: 0 12px 32px oklch(0 0 0 / 0.45), 0 0 0 0 oklch(0.72 0.17 155 / 0);
+    }
+  }
+}
+
+/* ---------- Base ---------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  html:has(#faq) {
+    scroll-padding-top: 92px;
+  }
+  body {
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+  }
+  img {
+    max-width: 100%;
+    display: block;
+  }
+  a {
+    color: inherit;
+  }
+  @media (max-width: 560px) {
+    body {
+      font-size: 16px;
+    }
+  }
+}
+
+/* ---------- Utilidades del sistema ---------- */
+
+/* Tipografía display: Archivo expandido, mayúsculas */
+@utility display {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-stretch: 125%;
+  letter-spacing: -0.015em;
+  line-height: 1.02;
+  text-transform: uppercase;
+}
+
+/* Texto con contorno (marquesina y numeración del método) */
+@utility text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.2px var(--color-accent);
+}
+
+/* Contenedor centrado */
+@utility container-x {
+  max-width: 1140px;
+  margin-inline: auto;
+  padding-inline: 28px;
+}
+
+/* ---------- Componentes ---------- */
+@layer components {
+  /* Botones */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 28px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+  }
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+  .btn:active {
+    transform: translateY(0);
+  }
+  .btn svg {
+    flex: none;
+  }
+  .btn-accent {
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+  }
+  .btn-accent:hover {
+    box-shadow: 0 8px 28px oklch(0.74 0.115 330 / 0.35);
+  }
+  .btn-wa {
+    background: var(--color-wa);
+    color: var(--color-on-wa);
+  }
+  .btn-wa:hover {
+    box-shadow: 0 8px 28px oklch(0.72 0.17 155 / 0.35);
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--color-text);
+    border-color: var(--color-line);
+  }
+  .btn-ghost:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  /* Brillo al pasar por botones sólidos */
+  .btn-accent,
+  .btn-wa {
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-accent::after,
+  .btn-wa::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg, transparent 32%, oklch(1 0 0 / 0.35) 50%, transparent 68%);
+    transform: translateX(-130%);
+    pointer-events: none;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    @keyframes btn-sheen {
+      from {
+        transform: translateX(-130%);
+      }
+      to {
+        transform: translateX(130%);
+      }
+    }
+    .btn-accent:hover::after,
+    .btn-wa:hover::after {
+      animation: btn-sheen 0.65s ease;
+    }
+  }
+
+  /* Placeholder de imagen */
+  .ph {
+    position: relative;
+    border-radius: var(--radius-card);
+    border: 1px dashed oklch(0.74 0.115 330 / 0.35);
+    background: repeating-linear-gradient(
+      -45deg,
+      oklch(0.22 0.026 325) 0 14px,
+      oklch(0.195 0.024 325) 14px 28px
+    );
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    min-height: 200px;
+  }
+  .ph span {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 13px;
+    color: var(--color-muted);
+    background: oklch(0.15 0.018 325 / 0.85);
+    border: 1px solid var(--color-line);
+    border-radius: 8px;
+    padding: 8px 14px;
+    text-align: center;
+    max-width: 80%;
+  }
+
+  /* Listas con viñeta rombo (servicios) */
+  .marker-list {
+    list-style: none;
+    display: grid;
+    gap: 9px;
+  }
+  .marker-list li {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .marker-list li::before {
+    content: "";
+    flex: none;
+    width: 7px;
+    height: 7px;
+    border-radius: 2px;
+    background: var(--color-accent);
+    transform: rotate(45deg) translateY(-1px);
+  }
+
+  /* Listas con check (precios) */
+  .check-list {
+    list-style: none;
+    display: grid;
+    gap: 10px;
+  }
+  .check-list li {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    font-size: 15px;
+    color: var(--color-muted);
+  }
+  .check-list li::before {
+    content: "✓";
+    color: var(--color-accent);
+    font-weight: 800;
+  }
+
+  /* Cita con comilla decorativa */
+  .quote-text::before {
+    content: "“";
+    color: var(--color-accent);
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 30px;
+    line-height: 0;
+    vertical-align: -8px;
+    margin-right: 4px;
+  }
+}
+
+/* ---------- Reveal on scroll (coordinado por JS) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  /* El estado oculto solo se aplica cuando el observer demuestra que funciona
+     (html.io-ok la añade el primer callback). Si no, todo es visible. */
+  html.io-ok .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.65s cubic-bezier(0.2, 0.7, 0.2, 1),
+      transform 0.65s cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition-delay: var(--d, 0s);
+  }
+  html.io-ok .reveal.from-left {
+    transform: translateX(-30px);
+  }
+  html.io-ok .reveal.from-right {
+    transform: translateX(30px);
+  }
+  html.io-ok .reveal.in {
+    opacity: 1;
+    transform: none;
+  }
+}

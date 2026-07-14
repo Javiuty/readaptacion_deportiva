@@ -1,0 +1,26 @@
+---
+import Brand from "./Brand.astro";
+
+const links = [
+  { href: "#servicios", label: "Servicios" },
+  { href: "#precios", label: "Precios" },
+  { href: "#contacto", label: "Contacto" },
+];
+---
+
+<footer class="border-t border-line py-11">
+  <div class="container-x flex flex-wrap items-center justify-between gap-6">
+    <Brand />
+    <div class="flex gap-5">
+      {links.map((link) => (
+        <a
+          class="text-[14px] text-muted no-underline transition-colors hover:text-accent"
+          href={link.href}
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+    <p class="text-[14px] text-muted">© 2026 Carmen Ramírez · Readaptación Deportiva</p>
+  </div>
+</footer>

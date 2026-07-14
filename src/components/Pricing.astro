@@ -1,0 +1,100 @@
+---
+import SectionHead from "./SectionHead.astro";
+
+const plans = [
+  {
+    featured: false,
+    flag: null,
+    title: "Sesión individual",
+    amount: "35€",
+    per: "/ sesión",
+    note: null,
+    items: ["Sesión 1:1 de 60 minutos", "Plan adaptado a la sesión", "Sin compromiso"],
+    cta: "Reservar",
+  },
+  {
+    featured: true,
+    flag: "El más elegido",
+    title: "Bono 8 sesiones",
+    amount: "240€",
+    per: "· 30€ / sesión",
+    note: "Ahorra 40€ frente a sesiones sueltas",
+    items: [
+      "8 sesiones 1:1 de 60 minutos",
+      "Programa de progresión completo",
+      "Seguimiento entre sesiones",
+    ],
+    cta: "Empezar ahora",
+  },
+  {
+    featured: false,
+    flag: null,
+    title: "Bono 12 sesiones",
+    amount: "330€",
+    per: "· 27,50€ / sesión",
+    note: null,
+    items: [
+      "12 sesiones 1:1 de 60 minutos",
+      "Ideal para readaptación completa",
+      "Revisiones de progreso mensuales",
+    ],
+    cta: "Reservar",
+  },
+];
+---
+
+<section class="bg-bg2 py-20 nav:py-[110px]" id="precios">
+  <div class="container-x">
+    <SectionHead
+      eyebrow="Precios"
+      title="Bonos y sesiones"
+      text="Sin permanencias ni letra pequeña. Elige el formato que mejor encaje contigo."
+    />
+    <div class="reveal-group grid items-stretch gap-6 nav:grid-cols-3">
+      {plans.map((plan) => (
+        <article
+          class:list={[
+            "reveal relative grid content-start gap-[18px] rounded-card border px-8 py-9",
+            plan.featured
+              ? "border-accent/35 bg-surface2 shadow-[0_24px_60px_oklch(0_0_0/0.35)]"
+              : "border-line bg-surface",
+          ]}
+        >
+          {plan.flag && (
+            <span
+              class="absolute -top-[13px] left-8 rounded-full bg-accent px-3.5 py-[5px] text-[12px] font-extrabold uppercase tracking-[0.1em] text-on-accent"
+            >
+              {plan.flag}
+            </span>
+          )}
+          <h3 class="text-xl">{plan.title}</h3>
+          <div class="flex items-baseline gap-2">
+            <span class="font-display text-[52px] font-black leading-none [font-stretch:125%]">
+              {plan.amount}
+            </span>
+            <span class="text-[15px] font-semibold text-muted">{plan.per}</span>
+          </div>
+          {plan.note && <p class="text-[14px] font-bold text-accent">{plan.note}</p>}
+          <ul class="check-list">
+            {plan.items.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+          <a
+            class:list={[
+              "btn mt-1.5 justify-self-start",
+              plan.featured ? "btn-accent" : "btn-ghost",
+            ]}
+            href="#contacto"
+          >
+            {plan.cta}
+          </a>
+        </article>
+      ))}
+    </div>
+    <p class="mt-7 text-center text-[15px] text-muted">
+      La <strong class="text-accent">primera valoración es gratuita</strong> y sin
+      compromiso. Precios orientativos — consulta disponibilidad.
+    </p>
+  </div>
+</section>

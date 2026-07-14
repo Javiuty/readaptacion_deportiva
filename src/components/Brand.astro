@@ -1,0 +1,25 @@
+---
+interface Props {
+  href?: string;
+}
+
+const { href = "#inicio" } = Astro.props;
+---
+
+<a class="flex items-center gap-3 no-underline" href={href}>
+  <span
+    class="grid size-10 flex-none place-items-center rounded-full bg-accent font-display text-[15px] font-black tracking-[0.02em] text-on-accent [font-stretch:125%]"
+  >
+    CR
+  </span>
+  <span class="grid leading-[1.15]">
+    <strong
+      class="font-display text-[15px] font-extrabold uppercase tracking-[0.06em] [font-stretch:125%]"
+    >
+      Carmen Ramírez
+    </strong>
+    <span class="text-[11px] font-semibold uppercase tracking-[0.18em] text-accent">
+      Readaptación Deportiva
+    </span>
+  </span>
+</a>

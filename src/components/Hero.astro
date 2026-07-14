@@ -1,0 +1,109 @@
+---
+import Eyebrow from "./Eyebrow.astro";
+import Placeholder from "./Placeholder.astro";
+import WhatsAppIcon from "./WhatsAppIcon.astro";
+import { WHATSAPP_URL, PHONE_DISPLAY } from "../consts";
+
+const tags = [
+  "Readaptación de lesiones",
+  "Entrenamiento 1:1",
+  "Todas las edades",
+];
+---
+
+<section
+  class="relative overflow-hidden pt-[150px] pb-[70px] nav:pt-[190px] nav:pb-[100px]"
+  id="inicio"
+>
+  <div
+    class="pointer-events-none absolute -top-[200px] -right-[180px] size-[720px] rounded-full will-change-transform"
+    style="background: radial-gradient(closest-side, oklch(0.74 0.115 330 / 0.14), transparent 70%); transform: translateY(calc(var(--hero-par, 0) * 1px));"
+  >
+  </div>
+
+  <div
+    class="container-x relative grid items-center gap-11 nav:grid-cols-[1.05fr_0.95fr] nav:gap-16"
+  >
+    <div class="col">
+      <Eyebrow class="anim-rise">Carmen Ramírez · Entrenadora personal</Eyebrow>
+      <h1 class="anim-rise display mt-5 mb-6 text-[clamp(48px,6.5vw,92px)]">
+        Vuelve<br />más <span class="text-accent">fuerte</span>
+      </h1>
+      <p class="anim-rise max-w-[480px] text-pretty text-[19px] text-muted">
+        Readaptación de lesiones y entrenamiento personal a tu medida. De la
+        recuperación al rendimiento, con un plan hecho solo para ti.
+      </p>
+      <div class="anim-rise mt-9 flex flex-wrap gap-3.5">
+        <a class="btn btn-wa" href={WHATSAPP_URL} target="_blank" rel="noopener">
+          <WhatsAppIcon size={18} strokeWidth={2.4} />
+          Escríbeme por WhatsApp
+        </a>
+        <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+      </div>
+      <div class="anim-rise mt-11 flex flex-wrap gap-2.5">
+        {tags.map((tag) => (
+          <span
+            class="rounded-full border border-line px-3.5 py-[7px] text-[13px] font-semibold uppercase tracking-[0.06em] text-muted"
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <div class="anim-media relative max-w-[480px] nav:max-w-none">
+      <Placeholder label="foto: Carmen entrenando con un cliente" class="aspect-[4/5]" />
+      <div
+        class="anim-card absolute bottom-8 left-3 flex items-center gap-3.5 rounded-card border border-line bg-surface px-5 py-4 shadow-[0_18px_50px_oklch(0_0_0/0.4)] nav:-left-7"
+      >
+        <span
+          class="size-2.5 flex-none rounded-full bg-wa shadow-[0_0_0_4px_oklch(0.72_0.17_155/0.12)]"
+        ></span>
+        <div>
+          <strong class="block text-[15px]">Primera valoración gratuita</strong>
+          <span class="text-[13px] text-muted">Sin compromiso · {PHONE_DISPLAY}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .anim-rise {
+      animation: rise 0.75s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+    }
+    .col > :nth-child(1) {
+      animation-delay: 0.05s;
+    }
+    .col > :nth-child(2) {
+      animation-delay: 0.14s;
+    }
+    .col > :nth-child(3) {
+      animation-delay: 0.26s;
+    }
+    .col > :nth-child(4) {
+      animation-delay: 0.36s;
+    }
+    .col > :nth-child(5) {
+      animation-delay: 0.46s;
+    }
+    .anim-media {
+      animation: rise 0.9s 0.3s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+    }
+    .anim-card {
+      animation: rise 0.7s 0.65s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+    }
+  }
+</style>
