@@ -20,25 +20,31 @@ const creds = [
       <Eyebrow>Sobre mí</Eyebrow>
       <h2 class="display text-[clamp(34px,4.6vw,54px)]">Soy Carmen</h2>
       <p class="text-pretty text-[17px] text-muted">
-        Entrenadora personal especializada en readaptación deportiva. Llevo años
-        ayudando a personas a recuperarse de sus lesiones y a entrenar con
-        cabeza: deportistas que quieren volver a competir, gente que empieza de
-        cero y personas mayores que quieren moverse mejor.
+        Entrenadora personal especializada en readaptación deportiva de
+        lesiones. A lo largo de mi vida he practicado deportes como gimnasia
+        rítmica, baile, natación, yoga, pilates, entrenamiento de fuerza y
+        crosstraining.
       </p>
       <p class="text-pretty text-[17px] text-muted">
-        Creo en el trabajo bien hecho, progresivo y sin atajos. Mi objetivo es
-        que entiendas tu cuerpo, pierdas el miedo a moverte y consigas resultados
-        que se mantengan.
+        Creo en el trabajo de la fuerza como uno de los indicadores principales
+        de nuestro estado de salud.
+      </p>
+      <p class="text-pretty text-[17px] text-muted">
+        Cada cuerpo es diferente, con unos patrones y compensaciones distintas:
+        mi objetivo es que entiendas cómo funciona el tuyo y que aprendas a
+        moverte, pero a moverte bien, con calidad y así no tengas miedo a
+        lesionarte. Adaptarte el ejercicio para que lo incluyas fácilmente en tu
+        rutina. Los resultados llegan con la constancia y el buen trabajo.
       </p>
       <div class="mt-2.5 flex flex-wrap gap-2.5">
-        {creds.map((cred) => (
-          <span
-            class="inline-flex items-center gap-2 rounded-full border border-accent/35 bg-accent/15 px-4 py-2 text-[14px] font-semibold text-text"
-          >
-            <span class="size-1.5 flex-none rounded-full bg-accent"></span>
-            {cred}
-          </span>
-        ))}
+        {
+          creds.map((cred) => (
+            <span class="inline-flex items-center gap-2 rounded-full border border-accent/35 bg-accent/15 px-4 py-2 text-[14px] font-semibold text-text">
+              <span class="size-1.5 flex-none rounded-full bg-accent" />
+              {cred}
+            </span>
+          ))
+        }
       </div>
     </div>
   </div>
