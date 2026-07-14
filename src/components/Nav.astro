@@ -5,7 +5,7 @@ import { NAV_LINKS, WHATSAPP_URL } from "../consts";
 ---
 
 <header
-  class="fixed inset-x-0 top-0 z-[100] border-b border-transparent bg-[oklch(0.15_0.018_325/0.82)] backdrop-blur-[14px] transition-[border-color] duration-[250ms]"
+  class="fixed inset-x-0 top-0 z-[100] border-b border-transparent bg-[oklch(0.99_0.002_326/0.8)] backdrop-blur-[14px] transition-[border-color] duration-[250ms]"
   id="topnav"
 >
   <span
@@ -75,7 +75,7 @@ import { NAV_LINKS, WHATSAPP_URL } from "../consts";
   }
   .nav-links a.active {
     color: var(--color-accent);
-    background: oklch(0.74 0.115 330 / 0.14);
+    background: color-mix(in oklab, var(--color-accent) 18%, transparent);
   }
 
   /* Menú desplegable en móvil */

@@ -6,7 +6,11 @@ const services = [
     num: "01",
     title: "Readaptación de lesiones",
     text: "El puente entre la fisioterapia y tu vida activa. Trabajo progresivo y seguro para recuperar función, fuerza y confianza.",
-    items: ["Post-rehabilitación", "Vuelta al deporte", "Prevención de recaídas"],
+    items: [
+      "Post-rehabilitación",
+      "Vuelta al deporte",
+      "Prevención de recaídas",
+    ],
   },
   {
     num: "02",
@@ -18,7 +22,11 @@ const services = [
     num: "03",
     title: "Salud y movilidad",
     text: "Fuerza, equilibrio y movilidad para sentirte bien en el día a día, a cualquier edad y desde cualquier punto de partida.",
-    items: ["Personas mayores", "Movilidad y equilibrio", "Hábitos sostenibles"],
+    items: [
+      "Personas mayores",
+      "Movilidad y equilibrio",
+      "Hábitos sostenibles",
+    ],
   },
 ];
 ---
@@ -27,28 +35,26 @@ const services = [
   <div class="container-x">
     <SectionHead
       eyebrow="Servicios"
-      title="Entrena con un plan, no con suerte"
+      title="Entrena con sentido: valoración, programación y objetivos claros"
       text="Cada persona llega con una historia distinta: una lesión, un objetivo, una etapa. El trabajo siempre empieza por ti."
     />
     <div class="reveal-group grid gap-6 nav:grid-cols-3">
-      {services.map((service) => (
-        <article
-          class="reveal grid content-start gap-4 rounded-card border border-line bg-surface px-[30px] py-[34px] transition-[transform,border-color] duration-200 hover:-translate-y-1 hover:border-accent/35"
-        >
-          <span
-            class="font-display text-[15px] font-black tracking-[0.1em] text-accent [font-stretch:125%]"
-          >
-            {service.num}
-          </span>
-          <h3 class="text-2xl">{service.title}</h3>
-          <p class="text-pretty text-[16px] text-muted">{service.text}</p>
-          <ul class="marker-list mt-1.5">
-            {service.items.map((item) => (
-              <li>{item}</li>
-            ))}
-          </ul>
-        </article>
-      ))}
+      {
+        services.map((service) => (
+          <article class="reveal grid content-start gap-4 rounded-card border border-line bg-surface px-[30px] py-[34px] transition-[transform,border-color] duration-200 hover:-translate-y-1 hover:border-accent/35">
+            <span class="font-display text-[15px] font-black tracking-[0.1em] text-accent [font-stretch:125%]">
+              {service.num}
+            </span>
+            <h3 class="text-2xl">{service.title}</h3>
+            <p class="text-pretty text-[16px] text-muted">{service.text}</p>
+            <ul class="marker-list mt-1.5">
+              {service.items.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </article>
+        ))
+      }
     </div>
   </div>
 </section>
