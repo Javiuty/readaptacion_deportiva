@@ -5,19 +5,24 @@ import { WHATSAPP_URL, PHONE_TEL, PHONE_DISPLAY } from "../consts";
 ---
 
 <section class="bg-bg2 py-20 nav:py-[110px]" id="contacto">
-  <div
-    class="container-x grid items-start gap-11 nav:grid-cols-[1fr_1.1fr] nav:gap-16"
-  >
-    <div class="reveal from-left grid gap-[18px]">
+  <div class="container-x">
+    <div class="reveal grid max-w-[640px] gap-[18px]">
       <Eyebrow>Contacto</Eyebrow>
-      <h2 class="display text-[clamp(34px,4.6vw,54px)]">Da el primer paso</h2>
+      <h2 class="display text-pretty text-[clamp(30px,4.6vw,54px)]">
+        Da el primer paso
+      </h2>
       <p class="text-pretty text-[18px] text-muted">
         Cuéntame tu caso sin compromiso. Te respondo en menos de 24 horas y
-        agendamos tu primera valoración gratuita.
+        agendamos tu primera valoración.
       </p>
-      <div class="reveal-group mt-3.5 grid gap-3.5">
+    </div>
+
+    <div
+      class="mt-11 grid items-start gap-6 nav:mt-14 nav:grid-cols-[1fr_1.1fr] nav:gap-12"
+    >
+      <div class="reveal from-left reveal-group grid content-start gap-3.5">
         <a
-          class="flex items-center gap-4 rounded-soft border border-line bg-surface px-5 py-4 no-underline transition-[border-color,transform] duration-150 hover:translate-x-1 hover:border-accent/35"
+          class="flex items-center gap-4 rounded-soft border border-line bg-surface px-5 py-4 shadow-[0_8px_22px_oklch(0_0_0/0.05)] no-underline transition-[border-color,transform,box-shadow] duration-150 hover:-translate-y-0.5 hover:border-accent/35 hover:shadow-[0_12px_28px_oklch(0_0_0/0.08)]"
           href={WHATSAPP_URL}
           target="_blank"
           rel="noopener"
@@ -36,7 +41,7 @@ import { WHATSAPP_URL, PHONE_TEL, PHONE_DISPLAY } from "../consts";
         </a>
 
         <a
-          class="flex items-center gap-4 rounded-soft border border-line bg-surface px-5 py-4 no-underline transition-[border-color,transform] duration-150 hover:translate-x-1 hover:border-accent/35"
+          class="flex items-center gap-4 rounded-soft border border-line bg-surface px-5 py-4 shadow-[0_8px_22px_oklch(0_0_0/0.05)] no-underline transition-[border-color,transform,box-shadow] duration-150 hover:-translate-y-0.5 hover:border-accent/35 hover:shadow-[0_12px_28px_oklch(0_0_0/0.08)]"
           href={`tel:${PHONE_TEL}`}
         >
           <span
@@ -65,7 +70,7 @@ import { WHATSAPP_URL, PHONE_TEL, PHONE_DISPLAY } from "../consts";
         </a>
 
         <a
-          class="flex items-center gap-4 rounded-soft border border-line bg-surface px-5 py-4 no-underline transition-[border-color,transform] duration-150 hover:translate-x-1 hover:border-accent/35"
+          class="flex items-center gap-4 rounded-soft border border-line bg-surface px-5 py-4 shadow-[0_8px_22px_oklch(0_0_0/0.05)] no-underline transition-[border-color,transform,box-shadow] duration-150 hover:-translate-y-0.5 hover:border-accent/35 hover:shadow-[0_12px_28px_oklch(0_0_0/0.08)]"
           href="https://www.instagram.com/bebalancedtraining/"
           target="_blank"
           rel="noopener noreferrer"
@@ -95,48 +100,78 @@ import { WHATSAPP_URL, PHONE_TEL, PHONE_DISPLAY } from "../consts";
             <span class="text-[14px] text-muted">@bebalancedtraining</span>
           </div>
         </a>
-      </div>
-    </div>
 
-    <form class="form-card reveal from-right" id="contact-form" novalidate>
-      <h3 class="text-[22px]">O escríbeme desde aquí</h3>
-      <div class="form-row">
-        <div class="field" id="f-nombre">
-          <label for="nombre">Nombre</label>
-          <input
-            type="text"
-            id="nombre"
-            name="nombre"
-            placeholder="Tu nombre"
-            autocomplete="name"
-          />
-          <span class="err">Escribe tu nombre.</span>
+        <div
+          class="mt-1 flex items-start gap-4 rounded-soft border border-accent/20 bg-accent/[0.07] px-5 py-4"
+        >
+          <span
+            class="grid size-11 flex-none place-items-center rounded-xl bg-accent/15 text-accent"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M12 3l7 3v5c0 4.6-3 7.6-7 9-4-1.4-7-4.4-7-9V6z"></path>
+              <path d="M9 12l2 2 4-4"></path>
+            </svg>
+          </span>
+          <div>
+            <strong class="block text-[15px]">Trato cercano y sin compromiso</strong>
+            <span class="text-[14px] text-muted"
+              >Valoro tu caso personalmente y solo seguimos adelante si lo ves
+              claro. Tus datos solo se usan para responderte.</span
+            >
+          </div>
         </div>
-        <div class="field" id="f-telefono">
-          <label for="telefono">Teléfono</label>
-          <input
-            type="tel"
-            id="telefono"
-            name="telefono"
-            placeholder="600 000 000"
-            autocomplete="tel"
-          />
-          <span class="err">Escribe un teléfono válido.</span>
+      </div>
+
+      <form class="form-card reveal from-right" id="contact-form" novalidate>
+        <h3 class="text-[22px]">Envíame un mensaje</h3>
+        <div class="form-row">
+          <div class="field" id="f-nombre">
+            <label for="nombre">Nombre</label>
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              placeholder="Tu nombre"
+              autocomplete="name"
+            />
+            <span class="err">Escribe tu nombre.</span>
+          </div>
+          <div class="field" id="f-telefono">
+            <label for="telefono">Teléfono</label>
+            <input
+              type="tel"
+              id="telefono"
+              name="telefono"
+              placeholder="600 000 000"
+              autocomplete="tel"
+            />
+            <span class="err">Escribe un teléfono válido.</span>
+          </div>
         </div>
-      </div>
-      <div class="field" id="f-mensaje">
-        <label for="mensaje">¿En qué puedo ayudarte?</label>
-        <textarea
-          id="mensaje"
-          name="mensaje"
-          placeholder="Cuéntame tu objetivo o tu lesión…"></textarea>
-        <span class="err">Cuéntame brevemente tu caso.</span>
-      </div>
-      <button class="btn btn-accent" type="submit">Enviar mensaje</button>
-      <div class="form-ok">
-        ✓ ¡Mensaje enviado! Carmen te responderá en menos de 24 horas.
-      </div>
-    </form>
+        <div class="field" id="f-mensaje">
+          <label for="mensaje">¿En qué puedo ayudarte?</label>
+          <textarea
+            id="mensaje"
+            name="mensaje"
+            placeholder="Cuéntame tu objetivo o tu lesión…"></textarea>
+          <span class="err">Cuéntame brevemente tu caso.</span>
+        </div>
+        <button class="btn btn-accent" type="submit">Enviar mensaje</button>
+        <div class="form-ok">
+          ✓ ¡Mensaje enviado! Carmen te responderá en menos de 24 horas.
+        </div>
+      </form>
+    </div>
   </div>
 </section>
 
@@ -148,6 +183,7 @@ import { WHATSAPP_URL, PHONE_TEL, PHONE_DISPLAY } from "../consts";
     border: 1px solid var(--color-line);
     background: var(--color-surface);
     padding: 36px;
+    box-shadow: 0 20px 50px oklch(0 0 0 / 0.07);
   }
   .form-row {
     display: grid;
@@ -161,7 +197,7 @@ import { WHATSAPP_URL, PHONE_TEL, PHONE_DISPLAY } from "../consts";
   }
   .field {
     display: grid;
-    gap: 8px;
+    gap: 7px;
   }
   .field label {
     font-size: 14px;
@@ -173,37 +209,46 @@ import { WHATSAPP_URL, PHONE_TEL, PHONE_DISPLAY } from "../consts";
     padding: 13px 16px;
     border: 1px solid var(--color-line);
     border-radius: var(--radius-soft);
-    background: var(--color-bg);
+    background: var(--color-bg2);
     color: var(--color-text);
     font-family: var(--font-body);
     font-size: 16px;
-    transition: border-color 0.15s ease;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  }
+  .field input::placeholder,
+  .field textarea::placeholder {
+    color: var(--color-muted);
   }
   .field input:focus,
   .field textarea:focus {
     outline: none;
     border-color: var(--color-accent);
+    background: var(--color-surface);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-accent) 16%, transparent);
   }
   .field textarea {
     min-height: 110px;
     resize: vertical;
   }
+  /* El mensaje de error reserva su espacio siempre: al aparecer no desplaza el input */
   .field .err {
-    display: none;
     font-size: 13px;
-    color: oklch(0.72 0.16 25);
+    line-height: 1.3;
+    min-height: 1.1em;
+    color: oklch(0.55 0.2 27);
+    visibility: hidden;
+  }
+  .field.invalid .err {
+    visibility: visible;
   }
   .field.invalid input,
   .field.invalid textarea {
-    border-color: oklch(0.62 0.18 25);
-  }
-  .field.invalid .err {
-    display: block;
+    border-color: oklch(0.58 0.2 27);
   }
   .form-ok {
     display: none;
     padding: 16px 20px;
-    border: 1px solid oklch(0.72 0.17 155 / 0.4);
+    border: 1px solid oklch(0.72 0.17 155 / 0.45);
     border-radius: var(--radius-soft);
     background: oklch(0.72 0.17 155 / 0.12);
     color: var(--color-text);
