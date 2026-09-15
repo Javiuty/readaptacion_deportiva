@@ -1,6 +1,7 @@
 ---
+import { Image } from "astro:assets";
 import Eyebrow from "./Eyebrow.astro";
-import Placeholder from "./Placeholder.astro";
+import portraitPhoto from "../assets/nerea-portrait.jpeg";
 
 const creds = [
   "Titulación oficial — completar",
@@ -14,7 +15,13 @@ const creds = [
     class="container-x grid items-center gap-11 nav:grid-cols-[0.9fr_1.1fr] nav:gap-16"
   >
     <div class="reveal from-left">
-      <Placeholder label="foto: retrato de Nerea" class="aspect-[4/5]" />
+      <Image
+        src={portraitPhoto}
+        alt="Retrato de Nerea Valdés en su centro de entrenamiento"
+        widths={[480, 928]}
+        sizes="(min-width: 980px) 460px, calc(100vw - 56px)"
+        class="aspect-[4/5] w-full rounded-card object-cover"
+      />
     </div>
     <div class="reveal from-right grid gap-[18px]">
       <Eyebrow>Sobre mí</Eyebrow>

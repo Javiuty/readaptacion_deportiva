@@ -1,8 +1,9 @@
 ---
+import { Image } from "astro:assets";
 import Eyebrow from "./Eyebrow.astro";
-import Placeholder from "./Placeholder.astro";
 import WhatsAppIcon from "./WhatsAppIcon.astro";
 import { WHATSAPP_URL, PHONE_DISPLAY } from "../consts";
+import heroPhoto from "../assets/nerea-main.jpeg";
 
 const tags = [
   "Readaptación de lesiones",
@@ -57,9 +58,14 @@ const tags = [
     </div>
 
     <div class="anim-media relative max-w-[480px] nav:max-w-none">
-      <Placeholder
-        label="foto: Nerea entrenando con un cliente"
-        class="aspect-[4/5]"
+      <Image
+        src={heroPhoto}
+        alt="Nerea Valdés guiando a un cliente durante un ejercicio de suelo con banda elástica"
+        widths={[480, 928]}
+        sizes="(min-width: 980px) 485px, (min-width: 536px) 480px, calc(100vw - 56px)"
+        loading="eager"
+        fetchpriority="high"
+        class="aspect-[4/5] w-full rounded-card object-cover"
       />
     </div>
   </div>
