@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* ============================================================
-   Readaptación Deportiva — Carmen Ramírez
+   Readaptación Deportiva — Nerea Valdés
    Sistema visual: oscuro enérgico + malva de la tarjeta
    ============================================================ */
 
@@ -63,18 +63,18 @@
 
 /* ---------- Tokens de diseño (Tailwind v4) ---------- */
 @theme {
-  /* Colores corporativos EXACTOS — malva #876987, azul #525e76, gris #d7d7d7.
-     Tema CLARO: fondos blanco/gris, marca (malva + azul) como acentos. */
-  --color-bg: oklch(0.99 0.002 326); /* casi blanco */
-  --color-bg2: oklch(0.955 0.004 326); /* gris muy claro (bandas alternas) */
-  --color-surface: oklch(1 0 0); /* tarjetas blancas */
-  --color-surface2: oklch(0.975 0.004 326); /* tarjeta destacada */
-  --color-line: #d7d7d7; /* gris corporativo (bordes/líneas) */
-  --color-text: oklch(0.29 0.022 326); /* texto oscuro (casi negro malva) */
-  --color-muted: oklch(0.46 0.02 326); /* texto secundario */
-  --color-accent: #876987; /* malva corporativo */
-  --color-on-accent: oklch(1 0 0); /* texto blanco sobre malva */
-  --color-accent2: #525e76; /* azul corporativo */
+  /* Marca: malva #876987 y azul #525e76 aclarados para fondo oscuro.
+     Tema OSCURO: fondos malva-carbón, marca (malva + azul) como acentos. */
+  --color-bg: oklch(0.15 0.018 325); /* casi negro malva */
+  --color-bg2: oklch(0.185 0.022 325); /* malva carbón (bandas alternas) */
+  --color-surface: oklch(0.215 0.025 325); /* tarjetas */
+  --color-surface2: oklch(0.25 0.028 325); /* tarjeta destacada */
+  --color-line: oklch(0.32 0.03 325 / 0.55); /* bordes/líneas */
+  --color-text: oklch(0.96 0.008 325); /* texto claro (casi blanco malva) */
+  --color-muted: oklch(0.74 0.025 325); /* texto secundario */
+  --color-accent: oklch(0.74 0.115 330); /* malva aclarado */
+  --color-on-accent: oklch(0.17 0.03 330); /* texto oscuro sobre malva */
+  --color-accent2: oklch(0.74 0.055 262); /* azul aclarado */
   --color-wa: oklch(0.72 0.17 155);
   --color-on-wa: oklch(0.16 0.04 155);
 
@@ -101,13 +101,13 @@
   }
   @keyframes fab-pulse {
     0% {
-      box-shadow: 0 12px 32px oklch(0 0 0 / 0.2), 0 0 0 0 oklch(0.72 0.17 155 / 0.4);
+      box-shadow: 0 12px 32px oklch(0 0 0 / 0.45), 0 0 0 0 oklch(0.72 0.17 155 / 0.4);
     }
     70% {
-      box-shadow: 0 12px 32px oklch(0 0 0 / 0.2), 0 0 0 16px oklch(0.72 0.17 155 / 0);
+      box-shadow: 0 12px 32px oklch(0 0 0 / 0.45), 0 0 0 16px oklch(0.72 0.17 155 / 0);
     }
     100% {
-      box-shadow: 0 12px 32px oklch(0 0 0 / 0.2), 0 0 0 0 oklch(0.72 0.17 155 / 0);
+      box-shadow: 0 12px 32px oklch(0 0 0 / 0.45), 0 0 0 0 oklch(0.72 0.17 155 / 0);
     }
   }
 }
@@ -260,8 +260,8 @@
     border: 1px dashed color-mix(in oklab, var(--color-accent2) 45%, transparent);
     background: repeating-linear-gradient(
       -45deg,
-      oklch(0.94 0.005 326) 0 14px,
-      oklch(0.965 0.003 326) 14px 28px
+      oklch(0.22 0.026 325) 0 14px,
+      oklch(0.195 0.024 325) 14px 28px
     );
     display: grid;
     place-items: center;
@@ -272,7 +272,7 @@
     font-family: ui-monospace, "SF Mono", Menlo, monospace;
     font-size: 13px;
     color: var(--color-muted);
-    background: oklch(1 0 0 / 0.85);
+    background: oklch(0.15 0.018 325 / 0.85);
     border: 1px solid var(--color-line);
     border-radius: 8px;
     padding: 8px 14px;
